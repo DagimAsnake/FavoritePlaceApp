@@ -1,4 +1,4 @@
-import {Button, View, Alert, Image, StyleSheet,Text} from "react-native"
+import {View, Alert, Image, StyleSheet,Text} from "react-native"
 import {launchCameraAsync, useCameraPermissions, PermissionStatus} from "expo-image-picker"
 import { useState } from "react"
 
@@ -42,22 +42,22 @@ function ImagePicker() {
         })
 
         if (image.canceled) {
-            console.log('Image picker was canceled');
+            // console.log('Image picker was canceled');
           } else if (image.error) {
-            console.log('Error occurred:', image.error);
+            // console.log('Error occurred:', image.error);
           } else if (image.assets && image.assets.length > 0) {
             const asset = image.assets[0];
             setPickedImage(asset.uri);
-            console.log('Image picked:', asset.uri);
+            // console.log('Image picked:', asset.uri);
           } else {
-            console.log('Unknown error occurred');
+            // console.log('Unknown error occurred');
           }
     }
 
     let imagePreview = <Text>No image taken yet.</Text>
 
     if(pickedImage) {
-        console.log(pickedImage)
+        // console.log(pickedImage)
         imagePreview = <Image style={styles.image} source={{uri: pickedImage}} />
     }
 
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: Colors.primary100,
         borderRadius: 4,
+        overflow: "hidden"
     },
     image: {
         width: "100%",
